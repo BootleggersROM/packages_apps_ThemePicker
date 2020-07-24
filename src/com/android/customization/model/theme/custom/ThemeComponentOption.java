@@ -25,6 +25,8 @@ import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY
 import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_ANDROID;
 import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_SETTINGS;
 import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_SYSUI;
+import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_GMS;
+import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_WELLBEING;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -456,7 +458,9 @@ public abstract class ThemeComponentOption implements CustomizationOption<ThemeC
             CustomThemeManager customThemeManager = (CustomThemeManager) manager;
             Map<String, String> themePackages = customThemeManager.getOverlayPackages();
             if (getOverlayPackages().isEmpty()) {
-                return themePackages.get(OVERLAY_CATEGORY_UISTYLE_SETTINGS) == null &&
+                return themePackages.get(OVERLAY_CATEGORY_UISTYLE_WELLBEING) == null &&
+                        themePackages.get(OVERLAY_CATEGORY_UISTYLE_GMS) == null &&
+                        themePackages.get(OVERLAY_CATEGORY_UISTYLE_SETTINGS) == null &&
                         themePackages.get(OVERLAY_CATEGORY_UISTYLE_SYSUI) == null &&
                         themePackages.get(OVERLAY_CATEGORY_UISTYLE_ANDROID) == null;
             }

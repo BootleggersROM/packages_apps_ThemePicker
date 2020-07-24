@@ -22,6 +22,8 @@ import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY
 import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_ANDROID;
 import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_SETTINGS;
 import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_SYSUI;
+import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_GMS;
+import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_WELLBEING;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -55,6 +57,8 @@ public class UiStyleOptionsProvider extends ThemeComponentOptionProvider<UiStyle
 
     private final List<String> mSysUiStylesOverlayPackages = new ArrayList<>();
     private final List<String> mSettingsStylesOverlayPackages = new ArrayList<>();
+    private final List<String> mGmsStylesOverlayPackages = new ArrayList<>();
+    private final List<String> mWellbeingStylesOverlayPackages = new ArrayList<>();
 
     public UiStyleOptionsProvider(Context context, OverlayManagerCompat manager,
             CustomThemeManager customThemeManager) {
@@ -67,6 +71,10 @@ public class UiStyleOptionsProvider extends ThemeComponentOptionProvider<UiStyle
                 OVERLAY_CATEGORY_UISTYLE_SYSUI, UserHandle.myUserId(), targetPackages));
         mSettingsStylesOverlayPackages.addAll(manager.getOverlayPackagesForCategory(
                 OVERLAY_CATEGORY_UISTYLE_SETTINGS, UserHandle.myUserId(), targetPackages));
+        mGmsStylesOverlayPackages.addAll(manager.getOverlayPackagesForCategory(
+                OVERLAY_CATEGORY_UISTYLE_GMS, UserHandle.myUserId(), targetPackages));
+        mWellbeingStylesOverlayPackages.addAll(manager.getOverlayPackagesForCategory(
+                OVERLAY_CATEGORY_UISTYLE_WELLBEING, UserHandle.myUserId(), targetPackages));
         mDefaultThemePackage = themePackages.isEmpty() ? null : themePackages.get(0);
     }
 
@@ -106,6 +114,14 @@ public class UiStyleOptionsProvider extends ThemeComponentOptionProvider<UiStyle
 
         for (String overlayPackage : mSettingsStylesOverlayPackages) {
             addOrUpdateOption(optionsByPrefix, overlayPackage, OVERLAY_CATEGORY_UISTYLE_SETTINGS);
+        }
+
+        for (String overlayPackage : mGmsStylesOverlayPackages) {
+            addOrUpdateOption(optionsByPrefix, overlayPackage, OVERLAY_CATEGORY_UISTYLE_GMS);
+        }
+
+        for (String overlayPackage : mWellbeingStylesOverlayPackages) {
+            addOrUpdateOption(optionsByPrefix, overlayPackage, OVERLAY_CATEGORY_UISTYLE_WELLBEING);
         }
 
         /**for (UiStyleOption option : optionsByPrefix.values()) {
@@ -155,6 +171,8 @@ public class UiStyleOptionsProvider extends ThemeComponentOptionProvider<UiStyle
                 mContext.getString(R.string.default_theme_title), lightColor, darkColor, accentColor);
         option.addOverlayPackage(OVERLAY_CATEGORY_UISTYLE_SYSUI, null);
         option.addOverlayPackage(OVERLAY_CATEGORY_UISTYLE_SETTINGS, null);
+        option.addOverlayPackage(OVERLAY_CATEGORY_UISTYLE_GMS, null);
+        option.addOverlayPackage(OVERLAY_CATEGORY_UISTYLE_WELLBEING, null);
         mOptions.add(option);
     }
 }

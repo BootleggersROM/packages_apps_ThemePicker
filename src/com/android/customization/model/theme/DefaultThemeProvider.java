@@ -28,6 +28,8 @@ import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY
 import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_ANDROID;
 import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_SETTINGS;
 import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_SYSUI;
+import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_GMS;
+import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_WELLBEING;
 import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_SHAPE;
 import static com.android.customization.model.ResourceConstants.SYSUI_PACKAGE;
 
@@ -87,6 +89,8 @@ public class DefaultThemeProvider extends ResourcesApkProvider implements ThemeB
     private static final String UISTYLE_ANDROID_PREFIX = "theme_overlay_style_android_";
     private static final String UISTYLE_SETTINGS_PREFIX = "theme_overlay_style_settings_";
     private static final String UISTYLE_SYSUI_PREFIX = "theme_overlay_style_sysui_";
+    private static final String UISTYLE_GMS_PREFIX = "theme_overlay_style_gms_";
+    private static final String UISTYLE_WELLBEING_PREFIX = "theme_overlay_style_wellbeing_";
     private static final String WALLPAPER_PREFIX = "theme_wallpaper_";
     private static final String WALLPAPER_TITLE_PREFIX = "theme_wallpaper_title_";
     private static final String WALLPAPER_ATTRIBUTION_PREFIX = "theme_wallpaper_attribution_";
@@ -179,6 +183,22 @@ public class DefaultThemeProvider extends ResourcesApkProvider implements ThemeB
                 mOverlayProvider.addNoPreviewUiStyleOverlay(builder, styleSysUiOverlayPackage);
             } catch (NotFoundException e) {
                 Log.d(TAG, "Couldn't find SystemUI style overlay, won't do anything.");
+            }
+
+            try {
+                String styleGmsOverlayPackage = getOverlayPackage(UISTYLE_GMS_PREFIX,
+                        themeName);
+                mOverlayProvider.addNoPreviewUiStyleOverlay(builder, styleGmsOverlayPackage);
+            } catch (NotFoundException e) {
+                Log.d(TAG, "Couldn't find GMS style overlay, won't do anything.");
+            }
+
+            try {
+                String styleWellbeingOverlayPackage = getOverlayPackage(UISTYLE_WELLBEING_PREFIX,
+                        themeName);
+                mOverlayProvider.addNoPreviewUiStyleOverlay(builder, styleWellbeingOverlayPackage);
+            } catch (NotFoundException e) {
+                Log.d(TAG, "Couldn't find Wellbeing style overlay, won't do anything.");
             }
 
             try {
@@ -512,10 +532,14 @@ public class DefaultThemeProvider extends ResourcesApkProvider implements ThemeB
                     customPackages.get(OVERLAY_CATEGORY_COLOR));
             mOverlayProvider.addUiStyleOverlay(builder,
                     customPackages.get(OVERLAY_CATEGORY_UISTYLE_ANDROID));
-            mOverlayProvider.addNoPreviewIconOverlay(builder,
+            mOverlayProvider.addNoPreviewUiStyleOverlay(builder,
                     customPackages.get(OVERLAY_CATEGORY_UISTYLE_SYSUI));
-            mOverlayProvider.addNoPreviewIconOverlay(builder,
+            mOverlayProvider.addNoPreviewUiStyleOverlay(builder,
                     customPackages.get(OVERLAY_CATEGORY_UISTYLE_SETTINGS));
+            mOverlayProvider.addNoPreviewUiStyleOverlay(builder,
+                    customPackages.get(OVERLAY_CATEGORY_UISTYLE_GMS));
+            mOverlayProvider.addNoPreviewUiStyleOverlay(builder,
+                    customPackages.get(OVERLAY_CATEGORY_UISTYLE_WELLBEING));
             mOverlayProvider.addAndroidIconOverlay(builder,
                     customPackages.get(OVERLAY_CATEGORY_ICON_ANDROID));
             mOverlayProvider.addSysUiIconOverlay(builder,
