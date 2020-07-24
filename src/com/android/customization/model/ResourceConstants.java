@@ -71,6 +71,8 @@ public interface ResourceConstants {
     String OVERLAY_CATEGORY_UISTYLE_ANDROID = "android.theme.customization.style.android";
     String OVERLAY_CATEGORY_UISTYLE_SETTINGS = "android.theme.customization.style.settings";
     String OVERLAY_CATEGORY_UISTYLE_SYSUI = "android.theme.customization.style.systemui";
+    String OVERLAY_CATEGORY_UISTYLE_GMS = "android.theme.customization.style.gms";
+    String OVERLAY_CATEGORY_UISTYLE_WELLBEING = "android.theme.customization.style.wellbeing";
 
     /**
      * Global Android theme category (default theme prebundled with the OS)
@@ -107,7 +109,7 @@ public interface ResourceConstants {
     static String[] getPackagesToOverlay(Context context) {
         if (sTargetPackages.isEmpty()) {
             sTargetPackages.addAll(Arrays.asList(ANDROID_PACKAGE, SETTINGS_PACKAGE,
-                    SYSUI_PACKAGE, GMS_PACKAGE, WELLBEING_PACKAGE));
+                    SYSUI_PACKAGE));
             sTargetPackages.add(getLauncherPackage(context));
         }
         return sTargetPackages.toArray(new String[0]);

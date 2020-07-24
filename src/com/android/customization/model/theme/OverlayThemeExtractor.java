@@ -4,6 +4,8 @@ import static com.android.customization.model.ResourceConstants.ANDROID_PACKAGE;
 import static com.android.customization.model.ResourceConstants.ICONS_FOR_PREVIEW;
 import static com.android.customization.model.ResourceConstants.SETTINGS_PACKAGE;
 import static com.android.customization.model.ResourceConstants.SYSUI_PACKAGE;
+import static com.android.customization.model.ResourceConstants.GMS_PACKAGE;
+import static com.android.customization.model.ResourceConstants.WELLBEING_PACKAGE;
 
 import android.content.Context;
 import android.content.om.OverlayInfo;
@@ -49,6 +51,9 @@ class OverlayThemeExtractor {
             UserHandle user = UserHandle.of(UserHandle.myUserId());
             om.getOverlayInfosForTarget(ANDROID_PACKAGE, user).forEach(addToMap);
             om.getOverlayInfosForTarget(SYSUI_PACKAGE, user).forEach(addToMap);
+            om.getOverlayInfosForTarget(SETTINGS_PACKAGE, user).forEach(addToMap);
+            om.getOverlayInfosForTarget(GMS_PACKAGE, user).forEach(addToMap);
+            om.getOverlayInfosForTarget(WELLBEING_PACKAGE, user).forEach(addToMap);
             om.getOverlayInfosForTarget(SETTINGS_PACKAGE, user).forEach(addToMap);
             om.getOverlayInfosForTarget(ResourceConstants.getLauncherPackage(context), user)
                     .forEach(addToMap);
