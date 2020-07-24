@@ -50,6 +50,15 @@ public interface ResourceConstants {
     String CONFIG_ICON_MASK = "config_icon_mask";
 
     /**
+     * Package name for android gms resources.
+     */
+    String GMS_PACKAGE = "com.google.android.gms";
+    /**
+     * Package name for android wellbeing resources.
+     */
+    String WELLBEING_PACKAGE = "com.google.android.apps.wellbeing";
+
+    /**
      * Overlay Categories that theme picker handles.
      */
     String OVERLAY_CATEGORY_COLOR = "android.theme.customization.accent_color";
@@ -98,7 +107,7 @@ public interface ResourceConstants {
     static String[] getPackagesToOverlay(Context context) {
         if (sTargetPackages.isEmpty()) {
             sTargetPackages.addAll(Arrays.asList(ANDROID_PACKAGE, SETTINGS_PACKAGE,
-                    SYSUI_PACKAGE));
+                    SYSUI_PACKAGE, GMS_PACKAGE, WELLBEING_PACKAGE));
             sTargetPackages.add(getLauncherPackage(context));
         }
         return sTargetPackages.toArray(new String[0]);

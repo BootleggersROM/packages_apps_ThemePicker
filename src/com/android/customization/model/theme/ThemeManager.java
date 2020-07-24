@@ -25,6 +25,8 @@ import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY
 import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_ANDROID;
 import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_SETTINGS;
 import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_SYSUI;
+import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_GMS;
+import static com.android.customization.model.ResourceConstants.OVERLAY_CATEGORY_UISTYLE_WELLBEING;
 import android.graphics.Point;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -57,6 +59,8 @@ public class ThemeManager implements CustomizationManager<ThemeBundle> {
         THEME_CATEGORIES.add(OVERLAY_CATEGORY_UISTYLE_ANDROID);
         THEME_CATEGORIES.add(OVERLAY_CATEGORY_UISTYLE_SETTINGS);
         THEME_CATEGORIES.add(OVERLAY_CATEGORY_UISTYLE_SYSUI);
+        THEME_CATEGORIES.add(OVERLAY_CATEGORY_UISTYLE_GMS);
+        THEME_CATEGORIES.add(OVERLAY_CATEGORY_UISTYLE_WELLBEING);
         THEME_CATEGORIES.add(OVERLAY_CATEGORY_FONT);
         THEME_CATEGORIES.add(OVERLAY_CATEGORY_SHAPE);
         THEME_CATEGORIES.add(OVERLAY_CATEGORY_ICON_ANDROID);
